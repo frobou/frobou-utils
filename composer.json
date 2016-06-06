@@ -1,28 +1,27 @@
 {
-    "name": "frobou/frobou-utils",
-    "description": "Frobou Utils",
-    "type": "library",
-    "version": "1.0.0",
-    "homepage": "http://frobou.com.br",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Fabio Pimenta",
-            "email": "blobs@frobou.com.br"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Frobou\\": "src/"
-        }
-    },
-    "config": {
-        "bin-dir": "bin/"
-    },
-    "require": {
-        "php": ">=5.4.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^5.3"
-    }
+	"name" : "frobou/frobou-utils",
+	"description" : "Frobou Utils",
+	"type" : "library",
+	"version" : "1.0.0",
+	"homepage" : "http://frobou.com.br",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Fabio Pimenta",
+			"email" : "blobs@frobou.com.br"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Frobou\\" : "src/"
+		}
+	},
+	"config" : {
+		"bin-dir" : "bin/"
+	},
+	"require" : {
+		"php" : ">=5.4.0"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "^5.3"
+	}
 }
