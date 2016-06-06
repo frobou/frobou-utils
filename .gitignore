@@ -1,0 +1,12 @@
+nbproject
+.project
+.settings
+.idea
+.buildpath
+vendor/
+bin/
+composer.lock
+composer.phar
+cache/
+files/
+.~*
