@@ -2,6 +2,9 @@
 
 namespace Frobou\Utils;
 
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+
 class Functions {
 
     /**
@@ -152,6 +155,17 @@ class Functions {
     public static function getDocumentRoot()
     {
         return filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/';
+    }
+
+    /**
+     *
+     * @return Logger
+     */
+    public static function getLogger($absolute_path, $level)
+    {
+        $log = new Logger('radius');
+        $log->pushHandler(new StreamHandler($absolute_path, $level));
+        return $log;
     }
 
 }
