@@ -39,7 +39,7 @@ class Functions {
     }
 
     /**
-     * 
+     *
      * @param array $value
      * @return boolean
      */
@@ -57,7 +57,7 @@ class Functions {
     }
 
     /**
-     * 
+     *
      * @param type $email
      * @return boolean
      */
@@ -70,15 +70,15 @@ class Functions {
     }
 
     /**
-     * 
+     *
      * @param type $domain_name
      * @return boolean
      */
     public static function validateDomainName($domain_name)
     {
         $ret = preg_match('/^([A-Z0-9][A-Z0-9_-]*(?:.[A-Z0-9][A-Z0-9_-]*)+):?(d+)?/i', $domain_name) //valid chars check
-                && preg_match("/^.{1,253}$/", $domain_name) //overall length check
-                && preg_match("/^[^\.]{1,63}(\.[^\.]{1,63})*$/", $domain_name);
+            && preg_match("/^.{1,253}$/", $domain_name) //overall length check
+            && preg_match("/^[^\.]{1,63}(\.[^\.]{1,63})*$/", $domain_name);
         if ($ret == true) {
             $dom = explode('.', $domain_name);
             if (count($dom) > 3 || (count($dom) > 2 && strlen($dom[count($dom) - 1]) != 2)) {
@@ -91,7 +91,7 @@ class Functions {
     }
 
     /**
-     * 
+     *
      * @param type $ip
      * @param type $groups
      * @param type $show_errors
@@ -161,10 +161,29 @@ class Functions {
      *
      * @return Logger
      */
-    public static function getLogger($absolute_path, $level)
+    public static function getLogger($log_name, $absolute_path, $level)
     {
-        $log = new Logger('radius');
-        $log->pushHandler(new StreamHandler($absolute_path, $level));
+        $log = new Logger($log_name);
+        switch (strtoupper($level)){
+            case 'INFO':
+                $lvl = Logger::INFO;
+                break;
+            case 'NOTICE':
+                $lvl = Logger::NOTICE;
+                break;
+            case 'WARNING':
+                $lvl = Logger::WARNING;
+                break;
+            case 'ALERT':
+                $lvl = Logger::ALERT;
+                break;
+            case 'CRITICAL':
+                $lvl = Logger::CRITICAL;
+                break;
+            default:
+                $lvl = Logger::INFO;
+        }
+        $log->pushHandler(new StreamHandler($absolute_path, $lvl));
         return $log;
     }
 
