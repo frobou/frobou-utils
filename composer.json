@@ -2,7 +2,6 @@
 	"name" : "frobou/frobou-utils",
 	"description" : "Frobou Utils",
 	"type" : "library",
-	"version" : "1.0.0",
 	"homepage" : "http://frobou.com.br",
 	"license" : "MIT",
 	"authors" : [{
