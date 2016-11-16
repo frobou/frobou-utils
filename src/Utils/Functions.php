@@ -7,6 +7,10 @@ use Monolog\Logger;
 
 class Functions {
 
+    /**
+     * @param $value
+     * @return string
+     */
     public static function getIpNetwork($value)
     {
         $range = '';
@@ -27,10 +31,29 @@ class Functions {
      *
      * @return Logger
      */
-    public static function getLogger($absolute_path, $level)
+    public static function getLogger($log_name, $absolute_path, $level)
     {
-        $log = new Logger('radius');
-        $log->pushHandler(new StreamHandler($absolute_path, $level));
+        $log = new Logger($log_name);
+        switch (strtoupper($level)){
+            case 'INFO':
+                $lvl = Logger::INFO;
+                break;
+            case 'NOTICE':
+                $lvl = Logger::NOTICE;
+                break;
+            case 'WARNING':
+                $lvl = Logger::WARNING;
+                break;
+            case 'ALERT':
+                $lvl = Logger::ALERT;
+                break;
+            case 'CRITICAL':
+                $lvl = Logger::CRITICAL;
+                break;
+            default:
+                $lvl = Logger::INFO;
+        }
+        $log->pushHandler(new StreamHandler($absolute_path, $lvl));
         return $log;
     }
 
