@@ -25,4 +25,4 @@ composer require frobou/frobou-utils
 
 ## License
 
-Veja em [LICENSE.md](LICENSE.md).
+Veja em [license.md](license.md).
