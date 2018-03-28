@@ -56,5 +56,15 @@ class Functions {
         $log->pushHandler(new StreamHandler($absolute_path, $lvl));
         return $log;
     }
+    
+    public static function json_decode_special($json, $assoc = false)
+    {
+        $json = str_replace("\n", "\\n", $json);
+        $json = str_replace("\r", "", $json);
+        $json = preg_replace('/([{,]+)(\s*)([^"]+?)\s*:/', '$1"$3":', $json);
+        $json = preg_replace('/(,)\s*}$/', '}', $json);
+        $json = utf8_encode($json);
+        return json_decode($json, $assoc);
+    }
 
 }
